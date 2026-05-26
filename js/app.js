@@ -17,7 +17,7 @@ const App = {
   },
 
   async _seedBanks() {
-    if (localStorage.getItem('quizapp-seeded')) return;
+    if (localStorage.getItem('quizapp-seeded') && Storage.getBanks().length > 0) return;
     const files = ['questions/tlc_mc.json', 'questions/tlc_problemi.json'];
     let seeded = 0;
     for (const path of files) {
