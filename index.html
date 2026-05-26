@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#4f46e5">
+  <title>Quiz Esami</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+</head>
+<body>
+<div id="app">
+
+  <!-- ══ HOME ══ -->
+  <section id="home" class="screen">
+    <div class="header">
+      <h1>📚 Quiz Esami</h1>
+      <button class="btn-icon" onclick="document.getElementById('import-file').click()" title="Importa JSON">⬆</button>
+      <input type="file" id="import-file" accept=".json" style="display:none">
+      <button class="btn-icon" onclick="Editor.openNew()" title="Nuovo banco">✚</button>
+    </div>
+    <div style="padding:16px;display:flex;flex-direction:column;gap:16px;flex:1;overflow-y:auto">
+      <div class="home-title">
+        <h2>I tuoi esami</h2>
+        <p>Seleziona un banco domande per iniziare</p>
+      </div>
+      <div>
+        <div class="section-label">Banchi domande</div>
+        <div class="bank-list" id="bank-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BANK DETAIL ══ -->
+  <section id="bank-detail" class="screen">
+    <div class="header">
+      <button class="btn-icon" onclick="App.showScreen('home')">‹</button>
+      <h1 id="bd-title">—</h1>
+      <button class="btn-icon" onclick="Editor.openEdit(App.currentBank)">✏️</button>
+      <button class="btn-icon" onclick="Editor.exportBank(App.currentBank?.id)">⬇</button>
+    </div>
+    <div class="bank-detail-body">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-value" id="bd-count">0</div><div class="stat-label">Domande</div></div>
+        <div class="stat-card"><div class="stat-value" id="bd-sessions">0</div><div class="stat-label">Sessioni</div></div>
+        <div class="stat-card"><div class="stat-value" id="bd-score">—</div><div class="stat-label">Score</div></div>
+      </div>
+      <div class="section-label">Modalità quiz</div>
+      <div class="mode-list">
+        <div class="mode-card" onclick="App.startQuiz('all')">
+          <span class="mode-icon">🎯</span>
+          <div class="mode-info">
+            <div class="mode-name">Tutte le domande</div>
+            <div class="mode-desc">Scelta multipla, aperte e numeriche in ordine</div>
+          </div>
+        </div>
+        <div class="mode-card" onclick="App.startQuiz('shuffle')">
+          <span class="mode-icon">🔀</span>
+          <div class="mode-info">
+            <div class="mode-name">Ordine casuale</div>
+            <div class="mode-desc">Le stesse domande in ordine randomizzato</div>
+          </div>
+        </div>
+        <div class="mode-card" onclick="App.startQuiz('mc')">
+          <span class="mode-icon">◉</span>
+          <div class="mode-info">
+            <div class="mode-name">Solo scelta multipla</div>
+            <div class="mode-desc">Allenati solo sulle domande a risposta chiusa</div>
+          </div>
+        </div>
+        <div class="mode-card" onclick="App.startQuiz('open')">
+          <span class="mode-icon">✎</span>
+          <div class="mode-info">
+            <div class="mode-name">Aperte e numeriche</div>
+            <div class="mode-desc">Domande di teoria e problemi con soluzione</div>
+          </div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <button class="btn btn-danger btn-sm" style="width:auto;align-self:flex-start" onclick="if(confirm('Eliminare questo banco?')){Storage.deleteBank(App.currentBank.id);App.renderHome();App.showScreen('home')}">Elimina banco</button>
+    </div>
+  </section>
+
+  <!-- ══ QUIZ ══ -->
+  <section id="quiz" class="screen">
+    <div class="header">
+      <button class="btn-icon" onclick="if(confirm('Uscire dal quiz?')){App.showScreen('bank-detail')}">✕</button>
+      <h1>Quiz</h1>
+    </div>
+    <div class="quiz-top">
+      <div class="progress-bar"><div class="progress-fill" id="qz-progress" style="width:0%"></div></div>
+      <div class="quiz-meta">
+        <span id="qz-type-badge" class="quiz-type-badge badge-mc">Scelta multipla</span>
+        <span id="qz-counter">1 / 1</span>
+      </div>
+    </div>
+    <div class="quiz-body">
+      <div class="question-text" id="qz-text"></div>
+      <img id="qz-img" class="question-img" src="" alt="Immagine domanda" style="display:none" onclick="App.openLightbox(this.src)">
+
+      <!-- Multiple choice -->
+      <div id="qz-mc-area" style="display:none">
+        <div class="options-list" id="qz-options"></div>
+      </div>
+
+      <!-- Open -->
+      <div id="qz-open-area" style="display:none;flex-direction:column;gap:10px">
+        <textarea class="answer-textarea" id="qz-open-textarea" placeholder="Scrivi la tua risposta…" rows="4"></textarea>
+        <div class="solution-box" id="qz-open-solution">
+          <div class="sol-label">Risposta corretta</div>
+          <div class="sol-text"></div>
+        </div>
+        <div class="self-assess" id="qz-self-assess">
+          <div class="self-assess-label">Quanto ti sei avvicinato?</div>
+          <div class="assess-row">
+            <button class="btn btn-success" onclick="Quiz.selfAssess('correct')">✓ Corretto</button>
+            <button class="btn btn-danger" onclick="Quiz.selfAssess('wrong')">✗ Sbagliato</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Numerical -->
+      <div id="qz-num-area" style="display:none;flex-direction:column;gap:10px">
+        <input class="field-input" id="qz-num-input" type="text" placeholder="Inserisci il risultato…" style="font-size:1rem;padding:12px">
+        <div class="feedback-box" id="qz-num-feedback"></div>
+        <div class="solution-box" id="qz-num-solution">
+          <div class="sol-label">Soluzione</div>
+          <div class="sol-text"></div>
+        </div>
+      </div>
+
+      <!-- Shared feedback -->
+      <div class="feedback-box" id="qz-feedback"></div>
+    </div>
+    <div class="quiz-footer" id="qz-footer"></div>
+  </section>
+
+  <!-- ══ RESULTS ══ -->
+  <section id="results" class="screen">
+    <div class="header">
+      <h1>Risultati</h1>
+    </div>
+    <div style="padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:20px;flex:1;overflow-y:auto">
+      <div class="result-circle" id="res-circle">
+        <div class="result-pct" id="res-pct">0%</div>
+        <div class="result-label">corretto</div>
+      </div>
+      <div style="text-align:center">
+        <div class="result-title" id="res-title">—</div>
+        <div class="result-sub text-muted mt-4" id="res-sub">—</div>
+      </div>
+      <div class="result-breakdown" style="width:100%">
+        <div class="breakdown-item bd-correct"><div class="breakdown-val" id="res-correct">0</div><div class="breakdown-lbl">Corretti</div></div>
+        <div class="breakdown-item bd-wrong"><div class="breakdown-val" id="res-wrong">0</div><div class="breakdown-lbl">Sbagliati</div></div>
+        <div class="breakdown-item bd-skip"><div class="breakdown-val" id="res-skip">0</div><div class="breakdown-lbl">Saltati</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-secondary" onclick="Quiz.reviewAnswers()">Rivedi risposte</button>
+        <button class="btn btn-primary" onclick="App.startQuiz(Quiz.mode)">Riprova</button>
+        <button class="btn btn-secondary" onclick="App.showScreen('bank-detail')">Torna al menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REVIEW ══ -->
+  <section id="review" class="screen">
+    <div class="header">
+      <button class="btn-icon" onclick="App.showScreen('results')">‹</button>
+      <h1>Revisione</h1>
+    </div>
+    <div class="review-list" id="review-list"></div>
+  </section>
+
+  <!-- ══ EDITOR ══ -->
+  <section id="editor" class="screen">
+    <div class="header">
+      <button class="btn-icon" onclick="App.showScreen('home')">‹</button>
+      <h1>Banco domande</h1>
+      <button class="btn-icon" onclick="Editor.saveBank()">💾</button>
+    </div>
+    <div class="editor-body">
+      <div class="field-group">
+        <label class="field-label">Titolo *</label>
+        <input class="field-input" id="ed-bank-title" placeholder="es. Fisica II — Esame 2024">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Materia</label>
+        <input class="field-input" id="ed-bank-subject" placeholder="es. Ingegneria, Medicina…">
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label" style="margin-bottom:10px">Domande</div>
+        <div id="ed-q-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px"></div>
+        <button class="btn btn-secondary" onclick="Editor.openQuestionModal(null)">+ Aggiungi domanda</button>
+      </div>
+      <div class="divider"></div>
+      <button class="btn btn-primary" onclick="Editor.saveBank()">💾 Salva banco</button>
+    </div>
+  </section>
+
+</div><!-- #app -->
+
+<!-- ══ QUESTION MODAL ══ -->
+<div class="modal-overlay" id="question-modal" onclick="if(event.target===this)App.closeModal('question-modal')">
+  <div class="modal-sheet" style="max-height:90dvh;overflow-y:auto">
+    <div class="modal-title">Domanda</div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="field-group">
+        <label class="field-label">Tipo</label>
+        <select class="field-input" id="qm-type" onchange="Editor.onTypeChange(this.value, null)">
+          <option value="multiple_choice">Scelta multipla</option>
+          <option value="open">Risposta aperta</option>
+          <option value="numerical">Problema numerico</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Testo domanda *</label>
+        <textarea class="field-input" id="qm-text" rows="3" placeholder="Scrivi la domanda…"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Immagine</label>
+        <div class="img-upload-row">
+          <input class="field-input" id="qm-image" placeholder="URL https://… (opzionale)">
+          <button class="btn btn-secondary btn-sm" type="button" onclick="Editor.pickImage()">📎 Scegli</button>
+        </div>
+        <input type="file" id="qm-image-file" accept="image/*" style="display:none" onchange="Editor.onImageFile(this)">
+        <div id="qm-image-preview" class="img-preview-box" style="display:none">
+          <img id="qm-img-thumb" src="" alt="Anteprima">
+          <button class="btn btn-sm btn-danger" onclick="Editor.clearImage()" style="width:auto">✕ Rimuovi</button>
+        </div>
+      </div>
+
+      <!-- MC fields -->
+      <div id="qm-mc-fields" style="flex-direction:column;gap:8px">
+        <label class="field-label">Opzioni (seleziona la corretta)</label>
+        <div id="qm-options-container" class="option-inputs"></div>
+      </div>
+
+      <!-- Open fields -->
+      <div id="qm-open-fields" style="flex-direction:column;gap:8px;display:none">
+        <div class="field-group">
+          <label class="field-label">Risposta corretta</label>
+          <textarea class="field-input" id="qm-open-answer" rows="4" placeholder="Risposta da mostrare allo studente…"></textarea>
+        </div>
+      </div>
+
+      <!-- Numerical fields -->
+      <div id="qm-num-fields" style="flex-direction:column;gap:8px;display:none">
+        <div class="field-group">
+          <label class="field-label">Risultato atteso</label>
+          <input class="field-input" id="qm-num-answer" placeholder="es. 42 N">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Soluzione step-by-step</label>
+          <textarea class="field-input" id="qm-num-solution" rows="4" placeholder="F = m·a&#10;F = 2 × 21 = 42 N"></textarea>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Spiegazione (facoltativa)</label>
+        <textarea class="field-input" id="qm-explanation" rows="2" placeholder="Nota o spiegazione aggiuntiva…"></textarea>
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-secondary" onclick="App.closeModal('question-modal')">Annulla</button>
+        <button class="btn btn-primary" onclick="Editor.saveQuestion()">Salva domanda</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lightbox" onclick="App.closeLightbox()">
+  <img src="" alt="Immagine ingrandita">
+</div>
+
+<!-- ══ TOAST ══ -->
+<div id="toast"></div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="window._katexReady=true;(function(){var q=document.getElementById('quiz');if(q&&q.style.display!=='none')renderMathInElement(q,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})})()"></script>
+<script src="js/storage.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

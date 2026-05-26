@@ -1,0 +1,1099 @@
+{
+  "title": "Fondamenti TLC — Scelta Multipla",
+  "subject": "Fondamenti TLC e Comunicazioni Elettriche (Caini, UNIBO)",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "text": "Nel WiFi (802.11) il numero di indirizzi presenti in un frame è:",
+      "options": [
+        "1 (solo destinazione)",
+        "2 (sorgente e destinazione)",
+        "3 o 4 (a seconda della modalità infrastruttura o ad hoc)",
+        "6 (come in Ethernet classico)"
+      ],
+      "correct": 2,
+      "explanation": "In modalità infrastruttura 802.11 si usano 3 indirizzi (trasmittente, destinatario, AP); in modalità ad hoc o WDS si possono usare fino a 4."
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "text": "La finestra rwnd utilizzata nel controllo di flusso del TCP:",
+      "options": [
+        "è fissata a 64 KB e non cambia durante la connessione",
+        "è comunicata dal ricevitore al mittente nel campo Window Size dell'header TCP",
+        "è gestita dal mittente in base alla stima del RTT",
+        "coincide sempre con la finestra cwnd di congestione"
+      ],
+      "correct": 1,
+      "explanation": "rwnd (receiver window) è pubblicizzata dal ricevitore nel campo Window del segmento TCP; limita quanti byte il mittente può avere in volo senza ricevere ACK."
+    },
+    {
+      "id": 3,
+      "type": "multiple_choice",
+      "text": "L'indirizzo logico indica:",
+      "options": [
+        "l'indirizzo fisico (MAC) della scheda di rete",
+        "l'host e la rete di appartenenza a livello IP",
+        "la porta TCP/UDP del processo applicativo",
+        "il numero di sequenza del pacchetto nella connessione"
+      ],
+      "correct": 1,
+      "explanation": "L'indirizzo logico (IP) identifica sia la rete che l'host; è distinto dall'indirizzo fisico (MAC) che opera a livello data-link."
+    },
+    {
+      "id": 4,
+      "type": "multiple_choice",
+      "text": "A cosa equivale $e^{j\\theta}$?",
+      "options": [
+        "$\\cos\\theta - j\\sin\\theta$",
+        "$\\cos\\theta + j\\sin\\theta$",
+        "$\\sin\\theta + j\\cos\\theta$",
+        "$j(\\cos\\theta + \\sin\\theta)$"
+      ],
+      "correct": 1,
+      "explanation": "Formula di Eulero: $e^{j\\theta} = \\cos\\theta + j\\sin\\theta$."
+    },
+    {
+      "id": 5,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet \"classico\" (802.3, 10 Mbit/s) con cavo a 4 coppie e connettori RJ45, la comunicazione è full-duplex?",
+      "options": [
+        "Sì, sempre full-duplex",
+        "No, è sempre half-duplex",
+        "No, di default è half-duplex; il full-duplex richiede switch e configurazione dedicata",
+        "Sì, ma solo se il cavo è categoria 5e o superiore"
+      ],
+      "correct": 2,
+      "explanation": "L'Ethernet classico 10BASE-T su doppino è di default half-duplex con CSMA/CD. Il full-duplex richiede connessione punto-punto con switch e disabilitazione di CSMA/CD."
+    },
+    {
+      "id": 6,
+      "type": "multiple_choice",
+      "text": "Quale di queste relazioni è vera per la funzione di crosscorrelazione di due segnali ad energia finita $x(t)$ e $y(t)$?",
+      "options": [
+        "$R_{xy}(\\tau) = \\int_{-\\infty}^{+\\infty} x(t)\\,y(t-\\tau)\\,dt$",
+        "$R_{xy}(\\tau) = \\int_{-\\infty}^{+\\infty} x(t)\\,y(t+\\tau)\\,dt$",
+        "$R_{xy}(\\tau) = R_{yx}(-\\tau)$",
+        "Sia la prima che la terza sono corrette"
+      ],
+      "correct": 3,
+      "explanation": "La crosscorrelazione è $R_{xy}(\\tau)=\\int x(t)y(t-\\tau)\\,dt$ e vale la proprietà $R_{xy}(\\tau)=R_{yx}(-\\tau)$."
+    },
+    {
+      "id": 7,
+      "type": "multiple_choice",
+      "text": "La risposta di un generico sistema lineare ad un fasore $x(t) = e^{j\\omega t}$ è:",
+      "options": [
+        "$y(t) = H(\\omega)\\,e^{j\\omega t}$",
+        "$y(t) = H(\\omega)\\,\\cos(\\omega t)$",
+        "$y(t) = |H(\\omega)|\\,e^{j\\omega t}$",
+        "$y(t) = e^{j[\\omega t + \\angle H(\\omega)]}$"
+      ],
+      "correct": 0,
+      "explanation": "Per un sistema LTI, l'ingresso $e^{j\\omega t}$ produce in uscita $H(\\omega)e^{j\\omega t}$, dove $H(\\omega)$ è la funzione di trasferimento valutata in $\\omega$."
+    },
+    {
+      "id": 8,
+      "type": "multiple_choice",
+      "text": "Data una sorgente binaria codificata con codice multilivello a 8 livelli, quale relazione c'è fra frequenza di bit $f_b$ e frequenza di simbolo $f_s$?",
+      "options": [
+        "$f_b = 8\\,f_s$",
+        "$f_b = 3\\,f_s$",
+        "$f_s = 8\\,f_b$",
+        "$f_b = f_s$"
+      ],
+      "correct": 1,
+      "explanation": "8 livelli $= 2^3$, quindi ogni simbolo trasporta 3 bit: $f_b = \\log_2(8)\\cdot f_s = 3\\,f_s$."
+    },
+    {
+      "id": 9,
+      "type": "multiple_choice",
+      "text": "Nella modulazione a prodotto (DSB-SC) si ha:",
+      "options": [
+        "$s(t) = V_0 [1 + m_a \\cdot x(t)]\\cos(2\\pi f_0 t)$",
+        "$s(t) = x(t)\\cos(2\\pi f_0 t)$",
+        "$s(t) = x(t) + \\cos(2\\pi f_0 t)$",
+        "$s(t) = x(t) \\cdot x(t - T)$"
+      ],
+      "correct": 1,
+      "explanation": "La modulazione a prodotto (Double Sideband Suppressed Carrier) moltiplica il segnale modulante per la portante: $s(t)=x(t)\\cos(2\\pi f_0 t)$, senza la componente di portante."
+    },
+    {
+      "id": 10,
+      "type": "multiple_choice",
+      "text": "Il prodotto di convoluzione fra $x(t)$ e $y(t)$ è definito come:",
+      "options": [
+        "$(x*y)(t) = \\int_{-\\infty}^{+\\infty} x(\\tau)\\,y(t+\\tau)\\,d\\tau$",
+        "$(x*y)(t) = \\int_{-\\infty}^{+\\infty} x(\\tau)\\,y(t-\\tau)\\,d\\tau$",
+        "$(x*y)(t) = x(t)\\cdot y(t)$",
+        "$(x*y)(t) = \\int_{-\\infty}^{+\\infty} x(t)\\,y(\\tau)\\,d\\tau$"
+      ],
+      "correct": 1,
+      "explanation": "La convoluzione è $(x*y)(t)=\\int_{-\\infty}^{+\\infty}x(\\tau)y(t-\\tau)d\\tau$."
+    },
+    {
+      "id": 11,
+      "type": "multiple_choice",
+      "text": "Quale è la definizione corretta della DFT di una sequenza $x[n]$ di lunghezza $N$?",
+      "options": [
+        "$X[k] = \\sum_{n=0}^{N-1} x[n]\\,e^{+j2\\pi kn/N}$",
+        "$X[k] = \\sum_{n=0}^{N-1} x[n]\\,e^{-j2\\pi kn/N}$",
+        "$X[k] = \\frac{1}{N}\\sum_{n=0}^{N-1} x[n]\\,e^{-j2\\pi kn/N}$",
+        "$X[k] = \\int_{-\\infty}^{+\\infty} x(t)\\,e^{-j2\\pi kt}\\,dt$"
+      ],
+      "correct": 1,
+      "explanation": "La DFT è $X[k]=\\sum_{n=0}^{N-1}x[n]e^{-j2\\pi kn/N}$; la IDFT divide per $N$ e usa il segno positivo nell'esponente."
+    },
+    {
+      "id": 12,
+      "type": "multiple_choice",
+      "text": "In un quantizzatore uniforme ad 8 bit di tipo midriser, quanti sono i livelli di quantizzazione?",
+      "options": [
+        "255",
+        "256",
+        "128",
+        "512"
+      ],
+      "correct": 1,
+      "explanation": "Con 8 bit si hanno $2^8 = 256$ livelli. Il tipo midriser ha un numero pari di livelli (nessun livello centrato sullo zero), mentre il midstep ha numero pari con un livello in zero."
+    },
+    {
+      "id": 13,
+      "type": "multiple_choice",
+      "text": "Quale è l'espressione dell'energia di un segnale tempo-continuo $x(t)$?",
+      "options": [
+        "$E = \\int_{-\\infty}^{+\\infty} x(t)\\,dt$",
+        "$E = \\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}|x(t)|^2\\,dt$",
+        "$E = \\int_{-\\infty}^{+\\infty} |x(t)|^2\\,dt$",
+        "$E = \\left[\\int_{-\\infty}^{+\\infty} |x(t)|\\,dt\\right]^2$"
+      ],
+      "correct": 2,
+      "explanation": "L'energia è $E=\\int_{-\\infty}^{+\\infty}|x(t)|^2\\,dt$. La potenza media è invece il limite del valore medio quadratico su intervallo $T\\to\\infty$."
+    },
+    {
+      "id": 14,
+      "type": "multiple_choice",
+      "text": "Sia $G=2$ il guadagno in potenza di un amplificatore. Quale è il suo valore in dB?",
+      "options": [
+        "2 dB",
+        "3 dB",
+        "6 dB",
+        "10 dB"
+      ],
+      "correct": 1,
+      "explanation": "$G_{dB}=10\\log_{10}(2)\\approx 3.01\\,\\text{dB}$. Ricordare: +3 dB $\\approx$ raddoppio della potenza, +6 dB $\\approx$ raddoppio della tensione."
+    },
+    {
+      "id": 15,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet classico (802.3, 10 Mbit/s), la comunicazione di default è full-duplex?",
+      "options": [
+        "Sì",
+        "No, è half-duplex",
+        "Dipende dalla versione del driver",
+        "Sì, ma solo su fibra ottica"
+      ],
+      "correct": 1,
+      "explanation": "L'Ethernet classico 10BASE-T usa CSMA/CD ed è half-duplex per default. Il full-duplex richiede switch dedicati e disabilita CSMA/CD."
+    },
+    {
+      "id": 16,
+      "type": "multiple_choice",
+      "text": "Se $V_1 = 20\\,\\text{V}$, quale è il suo valore in dBV?",
+      "options": [
+        "13 dBV",
+        "20 dBV",
+        "26 dBV",
+        "40 dBV"
+      ],
+      "correct": 2,
+      "explanation": "$V_{dBV}=20\\log_{10}(20)=20\\log_{10}(20)\\approx 26.02\\,\\text{dBV}$. Per le tensioni si usa il fattore 20 (non 10)."
+    },
+    {
+      "id": 17,
+      "type": "multiple_choice",
+      "text": "Nell'algoritmo CSMA-CA (802.11), il problema della stazione nascosta:",
+      "options": [
+        "non esiste perché 802.11 usa rilevazione delle collisioni",
+        "si verifica quando due stazioni non si sentono a vicenda ma entrambe comunicano con lo stesso AP",
+        "è risolto aumentando la potenza di trasmissione",
+        "non si verifica in modalità infrastruttura"
+      ],
+      "correct": 1,
+      "explanation": "La stazione nascosta: A e C non si sentono, ma entrambe trasmettono a B causando collisioni. Il meccanismo RTS/CTS di 802.11 mitiga questo problema."
+    },
+    {
+      "id": 18,
+      "type": "multiple_choice",
+      "text": "Quale è l'espressione della potenza di un segnale tempo-continuo $x(t)$?",
+      "options": [
+        "$P = \\int_{-\\infty}^{+\\infty} |x(t)|^2\\,dt$",
+        "$P = \\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}|x(t)|^2\\,dt$",
+        "$P = \\lim_{T\\to\\infty}\\int_{-T/2}^{T/2}|x(t)|^2\\,dt$",
+        "$P = \\left|\\int_{-\\infty}^{+\\infty}x(t)\\,dt\\right|^2$"
+      ],
+      "correct": 1,
+      "explanation": "La potenza media è $P=\\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}|x(t)|^2\\,dt$."
+    },
+    {
+      "id": 19,
+      "type": "multiple_choice",
+      "text": "Dato un segnale PAM aleatorio con codifica multilivello a 4 livelli ed impulso NRZ, quale è la banda del primo lobo in Hz se la frequenza di bit è $f_b$?",
+      "options": [
+        "$f_b / 4$",
+        "$f_b / 2$",
+        "$f_b$",
+        "$2\\,f_b$"
+      ],
+      "correct": 1,
+      "explanation": "4 livelli $=2^2$: $f_s = f_b/2$. L'impulso NRZ di durata $T_s=1/f_s$ ha primo zero dello spettro in $f=f_s=f_b/2$."
+    },
+    {
+      "id": 20,
+      "type": "multiple_choice",
+      "text": "Data la risposta impulsiva $h(t)$ di un generico sistema lineare con ingresso $x(t)$ e uscita $y(t)$, quale relazione è corretta?",
+      "options": [
+        "$y(t) = h(t) + x(t)$",
+        "$y(t) = h(t) \\cdot x(t)$",
+        "$y(t) = h(t) * x(t) = \\int_{-\\infty}^{+\\infty} h(\\tau)\\,x(t-\\tau)\\,d\\tau$",
+        "$Y(\\omega) = H(\\omega) + X(\\omega)$"
+      ],
+      "correct": 2,
+      "explanation": "Per un sistema LTI: $y(t)=h(t)*x(t)$ (convoluzione). Nel dominio della frequenza: $Y(\\omega)=H(\\omega)\\cdot X(\\omega)$."
+    },
+    {
+      "id": 21,
+      "type": "multiple_choice",
+      "text": "Dato un filtro trasversale (FIR) con $N$ prese, quale è la sua funzione di trasferimento?",
+      "options": [
+        "$H(z) = \\sum_{k=0}^{N-1} h[k]\\,z^{-k}$",
+        "$H(z) = \\prod_{k=0}^{N-1} h[k]\\,z^{-k}$",
+        "$H(z) = \\frac{1}{\\sum_{k=0}^{N-1} h[k]\\,z^{-k}}$",
+        "$H(z) = \\sum_{k=0}^{N-1} h[k]\\,z^{k}$"
+      ],
+      "correct": 0,
+      "explanation": "Un filtro trasversale (FIR) con $N$ prese ha $H(z)=\\sum_{k=0}^{N-1}h[k]z^{-k}$: somma pesata dei campioni ritardati."
+    },
+    {
+      "id": 22,
+      "type": "multiple_choice",
+      "text": "Nel caso di un segnale telefonico, lo standard richiede $f_0=8000\\,\\text{Hz}$ e 255 livelli di quantizzazione (midstep). Quanti bit per campione?",
+      "options": [
+        "7 bit (128 livelli) — 255 livelli non sono standard",
+        "8 bit, perché $2^8=256$ livelli ma uno è non usato (midstep ne usa 255 dispari)",
+        "8 bit ($2^8=256$ livelli; midstep con 255 livelli usa valori da $-127$ a $+127$ più zero)",
+        "16 bit"
+      ],
+      "correct": 2,
+      "explanation": "Lo standard PCM telefonico usa 8 bit/campione con quantizzazione midstep (255 livelli dispari: da $-127$ a $+127$ con lo zero). $f_b = 8000 \\times 8 = 64\\,\\text{kbit/s}$."
+    },
+    {
+      "id": 23,
+      "type": "multiple_choice",
+      "text": "Nella modulazione AM si ha:",
+      "options": [
+        "$s(t) = x(t)\\cos(2\\pi f_0 t)$",
+        "$s(t) = V_0\\cos(2\\pi f_0 t + k_f\\int x(\\tau)d\\tau)$",
+        "$s(t) = V_0[1 + m_a\\,x_n(t)]\\cos(2\\pi f_0 t)$",
+        "$s(t) = V_0\\cos(2\\pi f_0 t)\\cdot\\cos(2\\pi f_m t)$ solo per segnale sinusoidale"
+      ],
+      "correct": 2,
+      "explanation": "AM: $s(t)=V_0[1+m_a x_n(t)]\\cos(2\\pi f_0 t)$, dove $x_n(t)$ è il segnale normalizzato e $m_a$ è l'indice di modulazione. $m_a\\leq 1$ per evitare la sovramodulazione."
+    },
+    {
+      "id": 24,
+      "type": "multiple_choice",
+      "text": "Quale è il prodotto di due numeri complessi $z_1 = a+jb$ e $z_2 = c+jd$?",
+      "options": [
+        "$(a+c) + j(b+d)$",
+        "$(ac-bd) + j(ad+bc)$",
+        "$(ac+bd) + j(bc-ad)$",
+        "$|z_1||z_2|e^{j(\\phi_1\\cdot\\phi_2)}$"
+      ],
+      "correct": 1,
+      "explanation": "$z_1 z_2 = (ac-bd)+j(ad+bc)$. In forma polare: $|z_1 z_2|=|z_1||z_2|$ e $\\angle(z_1 z_2)=\\angle z_1+\\angle z_2$."
+    },
+    {
+      "id": 25,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale complesso sviluppabile in serie di Fourier. Se aggiungo una costante $k$ a $x(t)$, come cambiano i coefficienti $c_n$?",
+      "options": [
+        "Tutti i $c_n$ vengono moltiplicati per $k$",
+        "Solo $c_0$ cambia: $c_0 \\to c_0 + k$",
+        "Solo $c_1$ e $c_{-1}$ cambiano",
+        "Tutti i coefficienti cambiano"
+      ],
+      "correct": 1,
+      "explanation": "Aggiungere una costante $k$ al segnale sposta solo la componente continua: $c_0 \\to c_0 + k$. Gli altri coefficienti $c_n$ ($n\\neq 0$) rimangono invariati."
+    },
+    {
+      "id": 26,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale reale sviluppabile in serie di Fourier. Quale relazione è corretta per i coefficienti $c_n$?",
+      "options": [
+        "$c_n = c_{-n}$ (coefficienti pari)",
+        "$c_n = c_n^*$ (coefficienti reali)",
+        "$c_{-n} = c_n^*$ (coniugati simmetrici)",
+        "$|c_n| = |c_{n+1}|$ per ogni $n$"
+      ],
+      "correct": 2,
+      "explanation": "Per segnali reali vale la simmetria hermitiana: $c_{-n}=c_n^*$. Quindi lo spettro di ampiezza è pari ($|c_{-n}|=|c_n|$) e lo spettro di fase è dispari."
+    },
+    {
+      "id": 27,
+      "type": "multiple_choice",
+      "text": "L'integrale di Fourier (trasformata) di una funzione $x(t)$ è definito come:",
+      "options": [
+        "$X(f) = \\int_{-\\infty}^{+\\infty} x(t)\\,e^{+j2\\pi ft}\\,dt$",
+        "$X(f) = \\int_{-\\infty}^{+\\infty} x(t)\\,e^{-j2\\pi ft}\\,dt$",
+        "$X(f) = \\int_{0}^{+\\infty} x(t)\\,e^{-j2\\pi ft}\\,dt$",
+        "$X(f) = \\frac{1}{2\\pi}\\int_{-\\infty}^{+\\infty} x(t)\\,e^{-j\\omega t}\\,dt$"
+      ],
+      "correct": 1,
+      "explanation": "Convenzione con frequenza $f$ in Hz: $X(f)=\\int_{-\\infty}^{+\\infty}x(t)e^{-j2\\pi ft}dt$. La trasformata inversa usa $e^{+j2\\pi ft}$."
+    },
+    {
+      "id": 28,
+      "type": "multiple_choice",
+      "text": "L'indirizzo $137.204.142.12/24$ ha come indirizzo di rete:",
+      "options": [
+        "137.0.0.0",
+        "137.204.0.0",
+        "137.204.142.0",
+        "137.204.142.12"
+      ],
+      "correct": 2,
+      "explanation": "Maschera /24 = 255.255.255.0. AND bit a bit: $137.204.142.12$ AND $255.255.255.0$ = $137.204.142.0$."
+    },
+    {
+      "id": 29,
+      "type": "multiple_choice",
+      "text": "Supposta verificata la condizione di Shannon, il segnale campionato $x_c(t)$ può essere espresso in funzione dei campioni $x(nT_s)$ come:",
+      "options": [
+        "$x(t) = \\sum_n x(nT_s)\\,\\delta(t-nT_s)$",
+        "$x(t) = \\sum_n x(nT_s)\\,\\text{sinc}\\left(\\frac{t-nT_s}{T_s}\\right)$",
+        "$x(t) = \\sum_n x(nT_s)\\,\\text{rect}\\left(\\frac{t-nT_s}{T_s}\\right)$",
+        "$x(t) = T_s\\sum_n x(nT_s)\\,e^{j2\\pi n t/T_s}$"
+      ],
+      "correct": 1,
+      "explanation": "Formula di interpolazione di Whittaker-Shannon: $x(t)=\\sum_n x(nT_s)\\,\\text{sinc}(\\frac{t-nT_s}{T_s})$, dove $\\text{sinc}(u)=\\frac{\\sin(\\pi u)}{\\pi u}$."
+    },
+    {
+      "id": 30,
+      "type": "multiple_choice",
+      "text": "Sia $G=1000$ il guadagno in potenza di un amplificatore. Quale è il suo valore in dB?",
+      "options": [
+        "20 dB",
+        "30 dB",
+        "60 dB",
+        "100 dB"
+      ],
+      "correct": 1,
+      "explanation": "$G_{dB}=10\\log_{10}(1000)=10\\times 3=30\\,\\text{dB}$."
+    },
+    {
+      "id": 31,
+      "type": "multiple_choice",
+      "text": "In un quantizzatore uniforme ad 8 bit di tipo midstep, quanti sono i livelli di quantizzazione?",
+      "options": [
+        "255",
+        "256",
+        "257",
+        "128"
+      ],
+      "correct": 1,
+      "explanation": "Con 8 bit si hanno sempre $2^8=256$ livelli. Midstep significa che uno dei livelli è centrato sullo zero (livelli dispari usabili: 255 distinti + 1 zero), ma il conteggio totale è 256."
+    },
+    {
+      "id": 32,
+      "type": "multiple_choice",
+      "text": "Data la sinusoide $x(t) = A\\cos(2\\pi f_0 t + \\phi)$, quale relazione è vera?",
+      "options": [
+        "$x(t) = \\text{Re}\\{A\\,e^{j(2\\pi f_0 t + \\phi)}\\}$",
+        "$x(t) = A\\,e^{j(2\\pi f_0 t + \\phi)}$",
+        "$x(t) = \\text{Im}\\{A\\,e^{j(2\\pi f_0 t + \\phi)}\\}$",
+        "$x(t) = |A|^2\\cos^2(2\\pi f_0 t + \\phi)$"
+      ],
+      "correct": 0,
+      "explanation": "La sinusoide è la parte reale del fasore: $x(t)=\\text{Re}\\{A e^{j(2\\pi f_0 t+\\phi)}\\}=A\\cos(2\\pi f_0 t+\\phi)$."
+    },
+    {
+      "id": 33,
+      "type": "multiple_choice",
+      "text": "In un protocollo di rete di tipo non orientato alla connessione (connectionless):",
+      "options": [
+        "viene stabilita una connessione logica prima di inviare dati",
+        "ogni pacchetto viene instradato indipendentemente, senza connessione preliminare",
+        "è garantita la consegna ordinata dei pacchetti",
+        "si usa necessariamente il protocollo TCP"
+      ],
+      "correct": 1,
+      "explanation": "Un protocollo connectionless (come IP/UDP) non stabilisce una connessione: ogni datagramma è instradato indipendentemente. Non si garantisce ordine, affidabilità o consegna."
+    },
+    {
+      "id": 34,
+      "type": "multiple_choice",
+      "text": "Il controllo di flusso del TCP:",
+      "options": [
+        "evita di saturare la rete tra mittente e destinatario",
+        "evita di saturare il buffer del ricevitore mediante la finestra rwnd",
+        "gestisce la ritrasmissione dei segmenti persi",
+        "controlla la velocità di trasmissione in base al RTT"
+      ],
+      "correct": 1,
+      "explanation": "Il flow control TCP protegge il buffer del ricevitore: il ricevitore comunica rwnd (receive window) e il mittente non può avere in volo più di rwnd byte non riscontrati."
+    },
+    {
+      "id": 35,
+      "type": "multiple_choice",
+      "text": "La risposta di un generico sistema lineare ad una sinusoide $x(t)=A\\cos(\\omega t+\\phi)$ è:",
+      "options": [
+        "$y(t) = A\\,|H(\\omega)|\\cos(\\omega t + \\phi + \\angle H(\\omega))$",
+        "$y(t) = A\\,H(\\omega)\\cos(\\omega t + \\phi)$",
+        "$y(t) = A\\cos(\\omega t + \\phi + \\angle H(\\omega))$",
+        "$y(t) = A\\,|H(\\omega)|\\cos(\\omega t + \\angle H(\\omega))$"
+      ],
+      "correct": 0,
+      "explanation": "Per un sistema LTI, la risposta a una sinusoide ha la stessa frequenza: l'ampiezza è moltiplicata per $|H(\\omega)|$ e la fase è traslata di $\\angle H(\\omega)$."
+    },
+    {
+      "id": 36,
+      "type": "multiple_choice",
+      "text": "Il controllo di congestione del TCP:",
+      "options": [
+        "evita di saturare il buffer del ricevitore",
+        "evita di sovraccaricare la rete tra mittente e destinatario usando la finestra cwnd",
+        "garantisce la consegna in ordine dei segmenti",
+        "gestisce la priorità del traffico nella rete"
+      ],
+      "correct": 1,
+      "explanation": "Il congestion control TCP gestisce la finestra cwnd (congestion window) per non saturare la rete. Algoritmi: Slow Start, Congestion Avoidance, Fast Retransmit/Recovery."
+    },
+    {
+      "id": 37,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale audio telefonico. Se viene fatto passare attraverso un filtro passa-banda con banda passante $50\\text{–}4500\\,\\text{Hz}$, l'uscita $y(t)$:",
+      "options": [
+        "riproduce indistorto il segnale $x(t)$",
+        "non riproduce indistorto $x(t)$, perché la banda telefonica è $300\\text{–}3400\\,\\text{Hz}$ e il filtro taglia parte dello spettro",
+        "non riproduce indistorto $x(t)$, perché il filtro è troppo stretto",
+        "riproduce $x(t)$ solo se il filtro è ideale"
+      ],
+      "correct": 0,
+      "explanation": "La banda del segnale telefonico è $300\\text{–}3400\\,\\text{Hz}$, contenuta nella banda passante $50\\text{–}4500\\,\\text{Hz}$ del filtro: il segnale passa indistorto."
+    },
+    {
+      "id": 38,
+      "type": "multiple_choice",
+      "text": "Nel WiFi (802.11) in modalità infrastruttura, la comunicazione fra due stazioni:",
+      "options": [
+        "avviene direttamente da stazione a stazione",
+        "avviene sempre tramite l'Access Point",
+        "avviene tramite l'AP solo se le stazioni sono fuori portata",
+        "avviene direttamente se nella stessa cella"
+      ],
+      "correct": 1,
+      "explanation": "In modalità infrastruttura tutto il traffico passa per l'AP: anche due stazioni nella stessa cella comunicano A→AP→B, non direttamente."
+    },
+    {
+      "id": 39,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet \"Gigabit\" (802.3, 1 Gbit/s), quante coppie del cavo vengono usate in ricezione?",
+      "options": [
+        "1 coppia",
+        "2 coppie",
+        "4 coppie (tutte, con separazione elettronica dei flussi)",
+        "1 fibra ottica dedicata"
+      ],
+      "correct": 2,
+      "explanation": "Gigabit Ethernet su rame (1000BASE-T) usa tutte e 4 le coppie del cavo Cat5e sia in trasmissione che in ricezione simultaneamente, con cancellazione dell'eco per separare i due flussi."
+    },
+    {
+      "id": 40,
+      "type": "multiple_choice",
+      "text": "Data una serie temporale aleatoria, quale espressione rappresenta la funzione di autocorrelazione statistica?",
+      "options": [
+        "$R_x(\\tau) = \\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}x(t)x(t+\\tau)dt$",
+        "$R_x(t_1,t_2) = E[x(t_1)\\,x^*(t_2)]$",
+        "$R_x(\\tau) = \\int_{-\\infty}^{+\\infty}x(t)x(t+\\tau)dt$",
+        "$R_x(\\tau) = X(\\tau)\\cdot X^*(-\\tau)$"
+      ],
+      "correct": 1,
+      "explanation": "L'autocorrelazione statistica è il valore atteso: $R_x(t_1,t_2)=E[x(t_1)x^*(t_2)]$. Per processi stazionari dipende solo da $\\tau=t_2-t_1$."
+    },
+    {
+      "id": 41,
+      "type": "multiple_choice",
+      "text": "Sia $s(t)$ un'oscillazione AM con ampiezza della portante $V_0$ e ampiezza del segnale modulante sinusoidale $M$. Se $m_a=1$, quale è il massimo di $s(t)$?",
+      "options": [
+        "$V_0$",
+        "$V_0 + M$",
+        "$2V_0$",
+        "$V_0(1 + m_a) = 2V_0$"
+      ],
+      "correct": 3,
+      "explanation": "AM: $s(t)=V_0[1+m_a\\cos(\\omega_m t)]\\cos(\\omega_0 t)$. Il massimo dell'inviluppo con $m_a=1$ è $V_0(1+1)=2V_0$."
+    },
+    {
+      "id": 42,
+      "type": "multiple_choice",
+      "text": "Sia $x_1(t)$ la nota \"la\" di un pianoforte e $x_2(t)$ la stessa nota di un violino (entrambe a 440 Hz). I loro sviluppi in serie di Fourier:",
+      "options": [
+        "hanno gli stessi coefficienti $c_n$ in tutto",
+        "hanno la stessa frequenza fondamentale $f_0=440\\,\\text{Hz}$ ma coefficienti $c_n$ diversi (timbro diverso)",
+        "differiscono solo per la fase del fondamentale",
+        "hanno spettri completamente diversi, senza alcuna relazione"
+      ],
+      "correct": 1,
+      "explanation": "Il timbro di uno strumento è determinato dalla distribuzione delle armoniche (ampiezze e fasi dei $c_n$ per $n\\geq 2$). La frequenza fondamentale è la stessa per entrambi: 440 Hz."
+    },
+    {
+      "id": 43,
+      "type": "multiple_choice",
+      "text": "Lo spettro di fase monolatero di un segnale $x(t)$ è definito come:",
+      "options": [
+        "$\\Phi(f) = \\angle X(f)$ per $f \\geq 0$, con $\\Phi(0)=\\angle X(0)$",
+        "$\\Phi(f) = 2\\,\\angle X(f)$ per $f \\geq 0$",
+        "$\\Phi(f) = |\\angle X(f)|$ per $f \\geq 0$",
+        "$\\Phi(f) = \\angle X(f) + \\angle X(-f)$ per $f \\geq 0$"
+      ],
+      "correct": 0,
+      "explanation": "Lo spettro di fase monolatero riporta semplicemente $\\angle X(f)$ per $f\\geq 0$: la fase non raddoppia (a differenza dell'ampiezza monolatera che raddoppia per $f>0$)."
+    },
+    {
+      "id": 44,
+      "type": "multiple_choice",
+      "text": "Quale è la definizione corretta della IDFT (trasformata discreta inversa)?",
+      "options": [
+        "$x[n] = \\sum_{k=0}^{N-1} X[k]\\,e^{-j2\\pi kn/N}$",
+        "$x[n] = \\frac{1}{N}\\sum_{k=0}^{N-1} X[k]\\,e^{+j2\\pi kn/N}$",
+        "$x[n] = \\frac{1}{N}\\sum_{k=0}^{N-1} X[k]\\,e^{-j2\\pi kn/N}$",
+        "$x[n] = \\sum_{k=0}^{N-1} X[k]\\,e^{+j2\\pi kn/N}$"
+      ],
+      "correct": 1,
+      "explanation": "IDFT: $x[n]=\\frac{1}{N}\\sum_{k=0}^{N-1}X[k]e^{+j2\\pi kn/N}$. Il fattore $1/N$ e l'esponente positivo distinguono IDFT dalla DFT."
+    },
+    {
+      "id": 45,
+      "type": "multiple_choice",
+      "text": "Nella radiodiffusione FM analogica, la frequenza massima del segnale modulante $f_m$ è pari a 15 kHz. La deviazione massima di frequenza $\\Delta f$ è:",
+      "options": [
+        "$\\Delta f = 15\\,\\text{kHz}$",
+        "$\\Delta f = 75\\,\\text{kHz}$",
+        "$\\Delta f = 200\\,\\text{kHz}$",
+        "$\\Delta f = 53\\,\\text{kHz}$"
+      ],
+      "correct": 1,
+      "explanation": "Lo standard FM broadcast prevede $\\Delta f = 75\\,\\text{kHz}$ e $f_m = 15\\,\\text{kHz}$, quindi indice di modulazione $\\beta = \\Delta f/f_m = 5$."
+    },
+    {
+      "id": 46,
+      "type": "multiple_choice",
+      "text": "Quale è l'espressione della crosscorrelazione di due segnali a potenza finita $x(t)$ e $y(t)$?",
+      "options": [
+        "$R_{xy}(\\tau) = \\int_{-\\infty}^{+\\infty}x(t)y(t-\\tau)dt$",
+        "$R_{xy}(\\tau) = \\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}x(t)y(t+\\tau)dt$",
+        "$R_{xy}(\\tau) = X(\\omega)\\cdot Y^*(\\omega)$",
+        "$R_{xy}(\\tau) = \\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}x(t)y(t-\\tau)dt$"
+      ],
+      "correct": 3,
+      "explanation": "Per segnali a potenza finita la crosscorrelazione temporale è $R_{xy}(\\tau)=\\lim_{T\\to\\infty}\\frac{1}{T}\\int_{-T/2}^{T/2}x(t)y(t-\\tau)dt$."
+    },
+    {
+      "id": 47,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet \"classico\" (802.3, 10 Mbit/s) con cavo coassiale, la comunicazione è full-duplex?",
+      "options": [
+        "Sì, sempre",
+        "No, è half-duplex (il cavo coassiale è un mezzo condiviso, un solo trasmettitore alla volta)",
+        "Sì, con il cavo coassiale thick",
+        "Dipende dalla lunghezza del cavo"
+      ],
+      "correct": 1,
+      "explanation": "L'Ethernet su coassiale (10BASE-5 o 10BASE-2) usa CSMA/CD su mezzo broadcast condiviso: è half-duplex per natura fisica."
+    },
+    {
+      "id": 48,
+      "type": "multiple_choice",
+      "text": "Nel WiFi (802.11) in modalità \"ad hoc\", la comunicazione fra due stazioni:",
+      "options": [
+        "avviene sempre tramite un Access Point",
+        "avviene direttamente tra le stazioni, senza AP",
+        "non è possibile: serve sempre un AP",
+        "avviene tramite un router dedicato"
+      ],
+      "correct": 1,
+      "explanation": "La modalità ad hoc (IBSS) permette comunicazione diretta peer-to-peer tra stazioni WiFi, senza necessità di un Access Point."
+    },
+    {
+      "id": 49,
+      "type": "multiple_choice",
+      "text": "L'indirizzo $137.204.142.12/24$: quale è l'indirizzo host?",
+      "options": [
+        "137",
+        "142.12",
+        "12",
+        "204.142.12"
+      ],
+      "correct": 2,
+      "explanation": "Con maschera /24 (255.255.255.0), i primi 24 bit identificano la rete ($137.204.142$) e gli ultimi 8 bit l'host ($12$)."
+    },
+    {
+      "id": 50,
+      "type": "multiple_choice",
+      "text": "La finestra cwnd utilizzata nel controllo di congestione del TCP:",
+      "options": [
+        "è comunicata dal ricevitore al mittente nell'header TCP",
+        "è gestita dal mittente per stimare la capacità disponibile della rete",
+        "è fissa e uguale alla MTU",
+        "coincide sempre con rwnd"
+      ],
+      "correct": 1,
+      "explanation": "cwnd (congestion window) è una variabile locale al mittente, che stima la capacità della rete e limita i dati in volo. La finestra effettiva è $\\min(cwnd, rwnd)$."
+    },
+    {
+      "id": 51,
+      "type": "multiple_choice",
+      "text": "La somma di due numeri complessi $z_1=a+jb$ e $z_2=c+jd$ è:",
+      "options": [
+        "$(ac-bd)+j(ad+bc)$",
+        "$(a+c)+j(b+d)$",
+        "$\\sqrt{a^2+b^2}+\\sqrt{c^2+d^2}$",
+        "$|z_1|+|z_2|$"
+      ],
+      "correct": 1,
+      "explanation": "La somma di numeri complessi somma parti reali e immaginarie separatamente: $z_1+z_2=(a+c)+j(b+d)$."
+    },
+    {
+      "id": 52,
+      "type": "multiple_choice",
+      "text": "Fra la trasformata di una serie ottenuta per campionamento e la trasformata della funzione campionata vale la relazione:",
+      "options": [
+        "$X_c(f) = X(f)$ (sono identiche)",
+        "$X_c(f) = \\frac{1}{T_s}\\sum_k X(f - k/T_s)$ (ripetizione periodica dello spettro)",
+        "$X_c(f) = T_s \\cdot X(f)$",
+        "$X_c(f) = X(f) \\cdot \\text{rect}(f T_s)$"
+      ],
+      "correct": 1,
+      "explanation": "Il campionamento nel tempo provoca la periodicizzazione dello spettro con periodo $f_s=1/T_s$: $X_c(f)=\\frac{1}{T_s}\\sum_k X(f-k f_s)$. Il teorema di Shannon richiede $f_s\\geq 2f_{max}$ per evitare aliasing."
+    },
+    {
+      "id": 53,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale audio telefonico. Se viene fatto passare attraverso un filtro passa-alto con frequenza di taglio 100 Hz, l'uscita $y(t)$:",
+      "options": [
+        "riproduce indistorto il segnale $x(t)$",
+        "non riproduce indistorto $x(t)$: la banda telefonica parte da 300 Hz, e il filtro lascia passare componenti 100–300 Hz non presenti nel segnale originale",
+        "taglia la componente continua ma lascia passare tutto il resto del segnale telefonico",
+        "non riproduce indistorto $x(t)$ perché il filtro attenua le frequenze sotto 300 Hz"
+      ],
+      "correct": 2,
+      "explanation": "Il passa-alto con taglio a 100 Hz lascia passare da 100 Hz in su. Il segnale telefonico ha banda 300–3400 Hz: le componenti 300–3400 Hz passano, ma il filtro non attenua nulla di ciò che è nel segnale. La risposta corretta è che riproduce $x(t)$ perché le sue componenti ($\\geq 300\\,\\text{Hz}$) sono nella banda passante del filtro.",
+      "explanation": "Il segnale telefonico ha componenti fra 300–3400 Hz; il filtro passa-alto con taglio 100 Hz lascia passare tutto ciò che è oltre 100 Hz: il segnale telefonico passa indistorto."
+    },
+    {
+      "id": 54,
+      "type": "multiple_choice",
+      "text": "Data una sinusoide a 3400 Hz, se la frequenza di campionamento è scelta pari a 8 kHz, il segnale riprodotto è:",
+      "options": [
+        "distorto per aliasing, poiché $8\\,\\text{kHz} < 2 \\times 3400\\,\\text{Hz} = 6800\\,\\text{Hz}$",
+        "correttamente riprodotto, poiché $8\\,\\text{kHz} > 2 \\times 3400\\,\\text{Hz}$",
+        "distorto perché la frequenza di campionamento deve essere esattamente 6800 Hz",
+        "un segnale a 4600 Hz per aliasing"
+      ],
+      "correct": 1,
+      "explanation": "$f_s=8\\,\\text{kHz} > 2f_{max}=6.8\\,\\text{kHz}$: la condizione di Shannon è soddisfatta. Il segnale a 3400 Hz è correttamente campionato e ricostruibile."
+    },
+    {
+      "id": 55,
+      "type": "multiple_choice",
+      "text": "Sia $s(t)$ un'oscillazione QAM con portante a $f_0$ e frequenza massima dei segnali modulanti $f_m$. La banda occupata è:",
+      "options": [
+        "$f_m$",
+        "$2f_m$",
+        "$4f_m$",
+        "$f_0 \\pm f_m$"
+      ],
+      "correct": 1,
+      "explanation": "La QAM occupa una banda di $2f_m$ (banda doppia laterale) centrata su $f_0$: da $f_0-f_m$ a $f_0+f_m$."
+    },
+    {
+      "id": 56,
+      "type": "multiple_choice",
+      "text": "Sia $G=100$ il guadagno in potenza di un amplificatore. Quale è il suo valore in dB?",
+      "options": [
+        "10 dB",
+        "20 dB",
+        "40 dB",
+        "100 dB"
+      ],
+      "correct": 1,
+      "explanation": "$G_{dB}=10\\log_{10}(100)=10\\times 2=20\\,\\text{dB}$."
+    },
+    {
+      "id": 57,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale complesso sviluppabile in serie di Fourier. Quale relazione è corretta per i coefficienti $c_n$?",
+      "options": [
+        "$c_{-n} = c_n^*$ per qualsiasi segnale complesso",
+        "$c_n$ è in generale complesso e non vi sono vincoli di simmetria",
+        "$c_n = c_{-n}$ (simmetria pari)",
+        "$c_n$ deve essere reale"
+      ],
+      "correct": 1,
+      "explanation": "Per un segnale complesso generico i $c_n$ sono numeri complessi senza vincoli di simmetria. La simmetria hermitiana $c_{-n}=c_n^*$ vale solo per segnali reali."
+    },
+    {
+      "id": 58,
+      "type": "multiple_choice",
+      "text": "Data una serie temporale trasformabile secondo Fourier, quale relazione è corretta?",
+      "options": [
+        "$X(e^{j\\omega}) = \\sum_{n=-\\infty}^{+\\infty} x[n]\\,e^{-j\\omega n}$ (DTFT)",
+        "$X[k] = \\sum_{n=0}^{N-1} x[n]\\,e^{-j2\\pi kn/N}$ (DFT)",
+        "$X(f) = T_s\\sum_{n} x[nT_s]\\,e^{-j2\\pi f n T_s}$",
+        "Tutte le espressioni precedenti sono corrette in contesti diversi"
+      ],
+      "correct": 3,
+      "explanation": "Per una sequenza: la DTFT è $\\sum x[n]e^{-j\\omega n}$; la DFT è la versione campionata in frequenza su $N$ punti; la rappresentazione in Hz è $T_s\\sum x[nT_s]e^{-j2\\pi fnT_s}$. Tutte sono definizioni corrette in contesti diversi."
+    },
+    {
+      "id": 59,
+      "type": "multiple_choice",
+      "text": "Quale è la frequenza minima teorica di campionamento di un segnale $x(t)$ con frequenza massima $f_m$?",
+      "options": [
+        "$f_s = f_m$",
+        "$f_s = 2f_m$ (frequenza di Nyquist)",
+        "$f_s = 4f_m$",
+        "$f_s = f_m/2$"
+      ],
+      "correct": 1,
+      "explanation": "Teorema di Shannon-Nyquist: $f_s \\geq 2f_m$. La frequenza minima teorica è $f_s = 2f_m$ (frequenza di Nyquist)."
+    },
+    {
+      "id": 60,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ una sinusoide a 100 Hz con ampiezza $A$. Il suo spettro di ampiezza bilatero ha impulsi:",
+      "options": [
+        "solo in $f = 100\\,\\text{Hz}$ di ampiezza $A$",
+        "in $f = \\pm 100\\,\\text{Hz}$ di ampiezza $A/2$",
+        "in $f = \\pm 100\\,\\text{Hz}$ di ampiezza $A$",
+        "in $f = 0$ e $f = 100\\,\\text{Hz}$"
+      ],
+      "correct": 1,
+      "explanation": "$x(t)=A\\cos(2\\pi\\cdot100\\,t)=\\frac{A}{2}e^{j2\\pi\\cdot100\\,t}+\\frac{A}{2}e^{-j2\\pi\\cdot100\\,t}$: due impulsi di ampiezza $A/2$ in $\\pm 100\\,\\text{Hz}$."
+    },
+    {
+      "id": 61,
+      "type": "multiple_choice",
+      "text": "Data la funzione di trasferimento $H(\\omega)$, la sua caratteristica di ampiezza è:",
+      "options": [
+        "$T(\\omega) = \\text{Re}\\{H(\\omega)\\}$",
+        "$T(\\omega) = |H(\\omega)|$",
+        "$T(\\omega) = H(\\omega) \\cdot H^*(-\\omega)$",
+        "$T(\\omega) = \\sqrt{H(\\omega)}$"
+      ],
+      "correct": 1,
+      "explanation": "La caratteristica di ampiezza (o modulo) della funzione di trasferimento è $T(\\omega)=|H(\\omega)|$. La caratteristica di fase è $\\beta(\\omega)=\\angle H(\\omega)$."
+    },
+    {
+      "id": 62,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale audio telefonico. Se viene fatto passare attraverso un filtro passa-alto con frequenza di taglio 500 Hz, l'uscita $y(t)$:",
+      "options": [
+        "riproduce indistorto $x(t)$",
+        "non riproduce indistorto $x(t)$: il filtro taglia le componenti 300–500 Hz presenti nel segnale telefonico",
+        "riproduce $x(t)$ con solo le componenti sopra 500 Hz",
+        "non cambia nulla perché la maggior parte dell'energia è sopra 500 Hz"
+      ],
+      "correct": 1,
+      "explanation": "Il segnale telefonico ha banda 300–3400 Hz. Il filtro passa-alto a 500 Hz taglia le componenti 300–500 Hz: $y(t)$ non riproduce fedelmente $x(t)$ (distorsione)."
+    },
+    {
+      "id": 63,
+      "type": "multiple_choice",
+      "text": "Data una serie temporale e una funzione tempo-continua, quale relazione è corretta?",
+      "options": [
+        "La serie temporale è sempre la versione campionata di una funzione continua",
+        "$x[n] = x(nT_s)$ solo se il campionamento rispetta Shannon",
+        "La serie temporale $\\{x[n]\\}$ può essere ottenuta campionando $x(t)$: $x[n]=x(nT_s)$, ma non ogni sequenza deriva da una funzione continua",
+        "Una sequenza e una funzione continua sono sempre in corrispondenza biunivoca"
+      ],
+      "correct": 2,
+      "explanation": "Una sequenza $x[n]$ può derivare dal campionamento $x[n]=x(nT_s)$ di una funzione continua $x(t)$, ma non è necessariamente così: una sequenza può essere definita direttamente nel discreto."
+    },
+    {
+      "id": 64,
+      "type": "multiple_choice",
+      "text": "Data una sinusoide a 3400 Hz, se la frequenza di campionamento è scelta pari a 4 kHz, il segnale riprodotto è:",
+      "options": [
+        "corretto, poiché $4\\,\\text{kHz} > 3.4\\,\\text{kHz}$",
+        "affetto da aliasing: l'alias è a $4000 - 3400 = 600\\,\\text{Hz}$",
+        "affetto da aliasing: l'alias è a $4000 + 3400 = 7400\\,\\text{Hz}$",
+        "corretto se si usa un filtro anti-aliasing ideale a 2 kHz"
+      ],
+      "correct": 1,
+      "explanation": "$f_s=4\\,\\text{kHz} < 2\\times 3400\\,\\text{Hz}=6800\\,\\text{Hz}$: la condizione di Shannon è violata. L'alias si trova a $f_s - f = 4000-3400=600\\,\\text{Hz}$."
+    },
+    {
+      "id": 65,
+      "type": "multiple_choice",
+      "text": "Sia $s(t)$ un'oscillazione AM con $V_0$ ampiezza della portante e $M$ ampiezza del modulante sinusoidale. Se $m_a=0.5$, quanto vale il massimo di $s(t)$?",
+      "options": [
+        "$V_0$",
+        "$1.5\\,V_0$",
+        "$2\\,V_0$",
+        "$0.5\\,V_0 + M$"
+      ],
+      "correct": 1,
+      "explanation": "AM: inviluppo massimo $= V_0(1+m_a)=V_0(1+0.5)=1.5\\,V_0$. Con $m_a=M/V_0=0.5$ si ha $M=0.5\\,V_0$."
+    },
+    {
+      "id": 66,
+      "type": "multiple_choice",
+      "text": "Dati due segnali ad energia finita, quale relazione è corretta per la crosscorrelazione?",
+      "options": [
+        "$|R_{xy}(\\tau)|^2 \\leq R_{xx}(0)\\cdot R_{yy}(0)$ (disuguaglianza di Cauchy-Schwarz)",
+        "$R_{xy}(\\tau) = R_{xy}(-\\tau)$ (simmetria pari)",
+        "$R_{xy}(\\tau) = R_{yx}(\\tau)$ per ogni $\\tau$",
+        "$R_{xy}(\\tau) = 0$ per ogni $\\tau$ se i segnali sono ortogonali"
+      ],
+      "correct": 0,
+      "explanation": "Dalla disuguaglianza di Cauchy-Schwarz: $|R_{xy}(\\tau)|^2\\leq R_{xx}(0)\\cdot R_{yy}(0)=E_x\\cdot E_y$. Questo limita il massimo della crosscorrelazione."
+    },
+    {
+      "id": 67,
+      "type": "multiple_choice",
+      "text": "Sia $G=10$ il guadagno in potenza di un amplificatore. Quale è il suo valore in dB?",
+      "options": [
+        "5 dB",
+        "10 dB",
+        "20 dB",
+        "100 dB"
+      ],
+      "correct": 1,
+      "explanation": "$G_{dB}=10\\log_{10}(10)=10\\,\\text{dB}$."
+    },
+    {
+      "id": 68,
+      "type": "multiple_choice",
+      "text": "Dato un segnale telefonico con banda 300–3400 Hz e frequenza di campionamento $f_s=4\\,\\text{kHz}$, quale affermazione è corretta?",
+      "options": [
+        "Aliasing: $4\\,\\text{kHz} < 2\\times 3400\\,\\text{Hz}$",
+        "Corretto campionamento: $4\\,\\text{kHz} > 2\\times 3400\\,\\text{Hz}$ è falso, ma il segnale ha banda 300–3400 Hz e $f_s=4\\,\\text{kHz}$ è sufficiente",
+        "$f_s=4\\,\\text{kHz}$ è esattamente la frequenza di Nyquist per il segnale a 2000 Hz",
+        "Il campionamento è corretto: la frequenza massima è 3400 Hz e $f_s=4000>2\\times3400$ è falso, ma 8 kHz è lo standard"
+      ],
+      "correct": 1,
+      "explanation": "Il segnale telefonico ha $f_{max}=3400\\,\\text{Hz}$; Nyquist richiede $f_s\\geq 6800\\,\\text{Hz}$. Con $f_s=4\\,\\text{kHz}$ si ha aliasing. Lo standard telefonico usa $f_s=8\\,\\text{kHz}$ con un filtro anti-aliasing passa-basso a 4 kHz che limita il segnale a $\\leq 4\\,\\text{kHz}$: in quel caso $f_s=8\\,\\text{kHz}\\geq 2\\times 4\\,\\text{kHz}$."
+    },
+    {
+      "id": 69,
+      "type": "multiple_choice",
+      "text": "Dato un segnale PAM a potenza finita, reale, deterministico, quale espressione rappresenta correttamente il suo spettro di potenza $G(f)$?",
+      "options": [
+        "$G(f) = |P(f)|^2 \\cdot G_a(f)$",
+        "$G(f) = \\frac{1}{T_s}|P(f)|^2 \\cdot G_a(f)$, dove $P(f)$ è la trasf. dell'impulso e $G_a(f)$ lo spettro di potenza dei simboli",
+        "$G(f) = P(f) \\cdot G_a(f)$",
+        "$G(f) = T_s^2 |P(f)|^2 \\cdot G_a(f)$"
+      ],
+      "correct": 1,
+      "explanation": "Lo spettro di potenza di un segnale PAM è $G(f)=\\frac{1}{T_s}|P(f)|^2 G_a(f)$, dove $P(f)$ è la TF dell'impulso sagomatore e $G_a(f)$ è lo spettro di potenza della sequenza di simboli."
+    },
+    {
+      "id": 70,
+      "type": "multiple_choice",
+      "text": "Se la risposta impulsiva $h(t)$ di un sistema lineare è reale, quale coppia di caratteristiche è corretta?",
+      "options": [
+        "$T(\\omega)$ pari, $\\beta(\\omega)$ pari",
+        "$T(\\omega)$ pari, $\\beta(\\omega)$ dispari",
+        "$T(\\omega)$ dispari, $\\beta(\\omega)$ pari",
+        "$T(\\omega) = \\beta(\\omega)$"
+      ],
+      "correct": 1,
+      "explanation": "Se $h(t)$ è reale allora $H(-\\omega)=H^*(\\omega)$: la caratteristica di ampiezza $T(\\omega)=|H(\\omega)|$ è pari ($T(-\\omega)=T(\\omega)$) e la caratteristica di fase $\\beta(\\omega)=\\angle H(\\omega)$ è dispari ($\\beta(-\\omega)=-\\beta(\\omega)$)."
+    },
+    {
+      "id": 71,
+      "type": "multiple_choice",
+      "text": "Sia $G=10$ il guadagno in tensione di un amplificatore. Quale è il suo valore in dB?",
+      "options": [
+        "10 dBV",
+        "20 dBV",
+        "100 dBV",
+        "5 dBV"
+      ],
+      "correct": 1,
+      "explanation": "Per la tensione: $G_{dB}=20\\log_{10}(10)=20\\,\\text{dB}$. Il guadagno in tensione usa il fattore 20 (non 10, che vale per le potenze)."
+    },
+    {
+      "id": 72,
+      "type": "multiple_choice",
+      "text": "Data una scheda di rete 802.11n operante con due flussi spaziali (MIMO 2×2), quale è la massima velocità di trasmissione?",
+      "options": [
+        "150 Mbit/s",
+        "300 Mbit/s",
+        "450 Mbit/s",
+        "600 Mbit/s"
+      ],
+      "correct": 1,
+      "explanation": "802.11n con 2 flussi spaziali raggiunge al massimo 300 Mbit/s (con canale da 40 MHz e MCS 15). Con 1 flusso: 150 Mbit/s; con 3 flussi: 450 Mbit/s; con 4: 600 Mbit/s."
+    },
+    {
+      "id": 73,
+      "type": "multiple_choice",
+      "text": "Data una serie temporale aleatoria stazionaria (in senso lato), quale proprietà è corretta?",
+      "options": [
+        "Media e varianza variano nel tempo",
+        "La funzione di autocorrelazione dipende solo dal ritardo $\\tau$, non dal tempo assoluto",
+        "Il valor medio è sempre zero",
+        "Lo spettro di potenza è un impulso alla frequenza fondamentale"
+      ],
+      "correct": 1,
+      "explanation": "Un processo stazionario in senso lato (WSS) ha media costante e autocorrelazione $R_x(t_1,t_2)=R_x(\\tau)$ dipendente solo da $\\tau=t_2-t_1$."
+    },
+    {
+      "id": 74,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet \"fast\" (802.3, 100 Mbit/s), quali modalità di trasmissione sono disponibili?",
+      "options": [
+        "Solo half-duplex",
+        "Solo full-duplex",
+        "Entrambe: half-duplex (con CSMA/CD) e full-duplex (con switch)",
+        "Solo full-duplex su fibra, solo half-duplex su rame"
+      ],
+      "correct": 2,
+      "explanation": "Fast Ethernet (100BASE-TX) supporta sia half-duplex con CSMA/CD (hub) che full-duplex con switch. In pratica oggi si usa quasi sempre full-duplex."
+    },
+    {
+      "id": 75,
+      "type": "multiple_choice",
+      "text": "Nell'algoritmo CSMA-CA (802.11), il meccanismo RTS/CTS:",
+      "options": [
+        "aumenta sempre il throughput riducendo le collisioni",
+        "risolve il problema della stazione nascosta prenotando il canale prima di trasmettere",
+        "è obbligatorio in tutte le trasmissioni 802.11",
+        "elimina completamente le collisioni"
+      ],
+      "correct": 1,
+      "explanation": "RTS/CTS è un meccanismo opzionale che mitiga il problema della stazione nascosta: la stazione trasmette RTS, l'AP risponde CTS (udito da tutte le stazioni nell'area), prenotando il canale per la trasmissione successiva."
+    },
+    {
+      "id": 76,
+      "type": "multiple_choice",
+      "text": "Dopo l'invio del primo FIN e la ricezione del corrispondente ACK (non FIN-ACK), una connessione TCP si trova nello stato:",
+      "options": [
+        "CLOSED",
+        "FIN_WAIT_1",
+        "FIN_WAIT_2",
+        "CLOSE_WAIT"
+      ],
+      "correct": 2,
+      "explanation": "Chiusura TCP a quattro vie: dopo l'invio di FIN il mittente entra in FIN_WAIT_1; ricevuto l'ACK (non ancora FIN dell'altro lato) entra in FIN_WAIT_2, in attesa del FIN dall'altra parte."
+    },
+    {
+      "id": 77,
+      "type": "multiple_choice",
+      "text": "Sia $x(t)$ un segnale audio ad alta fedeltà. Se viene fatto passare attraverso un filtro passa-banda con banda passante 50–4500 Hz, l'uscita $y(t)$ riproduce indistorto il segnale?",
+      "options": [
+        "Sì, perché la banda 50–4500 Hz è sufficiente per l'audio",
+        "No: l'audio ad alta fedeltà ha banda fino a 20 kHz; il filtro taglia le componenti 4500–20000 Hz",
+        "Sì, se il segnale sorgente era già filtrato",
+        "No, il filtro passa-banda introduce sempre distorsione"
+      ],
+      "correct": 1,
+      "explanation": "L'audio ad alta fedeltà (hi-fi) ha banda fino a 20 kHz. Un filtro con banda 50–4500 Hz taglia tutte le componenti ad alta frequenza (4500–20000 Hz): $y(t)$ non riproduce fedelmente $x(t)$."
+    },
+    {
+      "id": 78,
+      "type": "multiple_choice",
+      "text": "Data una sorgente binaria codificata con codice multilivello a 8 livelli, quali sono i valori dei simboli?",
+      "options": [
+        "$\\{0, 1, 2, 3, 4, 5, 6, 7\\}$",
+        "$\\{-7, -5, -3, -1, +1, +3, +5, +7\\}$",
+        "$\\{-4, -3, -2, -1, 0, +1, +2, +3\\}$ oppure $\\{-3.5, -2.5, ..., +3.5\\}$ (midstep/midriser)",
+        "Dipende dalla codifica specifica (NRZ-L, AMI, ecc.)"
+      ],
+      "correct": 2,
+      "explanation": "Con 8 livelli simmetrici: il tipo midriser usa $\\{-7,-5,-3,-1,+1,+3,+5,+7\\}$ (8 valori, nessuno zero) o equivalenti; il tipo midstep include lo zero. La scelta dipende dalla specifica codifica."
+    },
+    {
+      "id": 79,
+      "type": "multiple_choice",
+      "text": "Data una scheda di rete 802.11n operante con un solo flusso spaziale, quale è la massima velocità di trasmissione?",
+      "options": [
+        "54 Mbit/s",
+        "72.2 Mbit/s (canale 20 MHz)",
+        "150 Mbit/s (canale 40 MHz)",
+        "300 Mbit/s"
+      ],
+      "correct": 2,
+      "explanation": "802.11n con 1 flusso spaziale e canale da 40 MHz (con Short Guard Interval) raggiunge 150 Mbit/s. Con canale da 20 MHz: max 72.2 Mbit/s."
+    },
+    {
+      "id": 80,
+      "type": "multiple_choice",
+      "text": "Quale di queste relazioni è vera per la crosscorrelazione di un segnale ad energia finita $x(t)$ con sé stesso (autocorrelazione)?",
+      "options": [
+        "$R_{xx}(\\tau) \\leq R_{xx}(0)$ per ogni $\\tau$ (massimo in zero)",
+        "$R_{xx}(\\tau) = R_{xx}(-\\tau)$ (funzione pari)",
+        "$R_{xx}(0) = E_x$ (uguale all'energia del segnale)",
+        "Tutte le precedenti sono corrette"
+      ],
+      "correct": 3,
+      "explanation": "L'autocorrelazione di un segnale ad energia finita: ha massimo in $\\tau=0$ (dove vale $E_x$), ed è una funzione pari. Tutte e tre le proprietà sono corrette."
+    },
+    {
+      "id": 81,
+      "type": "multiple_choice",
+      "text": "Quale è la relazione corretta per la crosscorrelazione di segnali ad energia finita?",
+      "options": [
+        "$R_{xy}(\\tau) = R_{yx}(\\tau)$",
+        "$R_{xy}(\\tau) = R_{yx}(-\\tau)$",
+        "$R_{xy}(\\tau) = -R_{yx}(\\tau)$",
+        "$R_{xy}(\\tau) = R_{yx}^*(\\tau)$"
+      ],
+      "correct": 1,
+      "explanation": "Per la crosscorrelazione vale: $R_{xy}(\\tau)=R_{yx}(-\\tau)$. In generale $R_{xy}\\neq R_{yx}$ (la crosscorrelazione non è simmetrica)."
+    },
+    {
+      "id": 82,
+      "type": "multiple_choice",
+      "text": "Data una serie temporale aleatoria ergodica, la media temporale:",
+      "options": [
+        "è sempre diversa dalla media statistica",
+        "coincide con la media statistica (valor medio dell'ensemble)",
+        "è definita solo per processi stazionari",
+        "non esiste per segnali aleatori"
+      ],
+      "correct": 1,
+      "explanation": "Per un processo ergodico, le medie temporali coincidono con le medie statistiche (ensemble): $\\langle x(t)\\rangle_{tempo} = E[x(t)]$."
+    },
+    {
+      "id": 83,
+      "type": "multiple_choice",
+      "text": "Dato un segnale telefonico con banda 300–3400 Hz, se la frequenza di campionamento è $f_s=4\\,\\text{kHz}$ con filtro anti-aliasing a 2 kHz, il risultato è:",
+      "options": [
+        "Campionamento corretto del segnale originale a banda piena",
+        "Campionamento corretto ma del segnale filtrato (solo componenti 300–2000 Hz)",
+        "Campionamento non valido perché serve $f_s\\geq 6800\\,\\text{Hz}$",
+        "Impossibile: un filtro a 2 kHz distrugge tutte le componenti vocali"
+      ],
+      "correct": 1,
+      "explanation": "Il filtro anti-aliasing a 2 kHz limita il segnale a 300–2000 Hz; poi $f_s=4\\,\\text{kHz}>2\\times 2000\\,\\text{Hz}$: Shannon è soddisfatto per il segnale filtrato, non per il segnale originale."
+    },
+    {
+      "id": 84,
+      "type": "multiple_choice",
+      "text": "Nell'Ethernet classico (802.3, 10 Mbit/s), la comunicazione di default è half-duplex?",
+      "options": [
+        "No, è full-duplex",
+        "Sì, è half-duplex con CSMA/CD",
+        "Dipende dal tipo di cavo",
+        "Sì, ma solo su cavo coassiale"
+      ],
+      "correct": 1,
+      "explanation": "L'Ethernet classico usa CSMA/CD ed è half-duplex per default: solo una stazione trasmette alla volta sul mezzo condiviso."
+    }
+  ]
+}

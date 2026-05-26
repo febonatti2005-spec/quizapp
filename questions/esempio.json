@@ -1,0 +1,39 @@
+{
+  "title": "Esempio Esame",
+  "subject": "Fisica",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "text": "Qual è l'unità di misura della forza nel Sistema Internazionale?",
+      "options": ["Joule", "Newton", "Pascal", "Watt"],
+      "correct": 1,
+      "explanation": "La forza si misura in Newton (N). 1 N = 1 kg·m/s²",
+      "image": null
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "text": "Un oggetto di massa 2 kg accelera a 3 m/s². Qual è la forza applicata?",
+      "options": ["1.5 N", "5 N", "6 N", "9 N"],
+      "correct": 2,
+      "explanation": "F = m·a = 2 kg × 3 m/s² = 6 N",
+      "image": null
+    },
+    {
+      "id": 3,
+      "type": "open",
+      "text": "Enunciare il principio di conservazione dell'energia.",
+      "answer": "L'energia totale di un sistema isolato rimane costante nel tempo. L'energia non può essere creata né distrutta, ma solo trasformata da una forma all'altra.",
+      "image": null
+    },
+    {
+      "id": 4,
+      "type": "numerical",
+      "text": "Un corpo di massa 5 kg cade da un'altezza di 10 m. Calcolare l'energia potenziale gravitazionale (g = 9.81 m/s²).",
+      "answer": "490.5 J",
+      "solution": "Ep = m·g·h\nEp = 5 kg × 9.81 m/s² × 10 m\nEp = 490.5 J",
+      "image": null
+    }
+  ]
+}
