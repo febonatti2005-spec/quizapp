@@ -1,4 +1,4 @@
-const CACHE = 'quizapp-v4';
+const CACHE = 'quizapp-v5';
 const ASSETS = [
   '/quizapp/',
   '/quizapp/index.html',
@@ -6,7 +6,9 @@ const ASSETS = [
   '/quizapp/js/app.js',
   '/quizapp/js/quiz.js',
   '/quizapp/js/editor.js',
-  '/quizapp/js/storage.js'
+  '/quizapp/js/storage.js',
+  '/quizapp/questions/tlc_mc.json',
+  '/quizapp/questions/tlc_problemi.json'
 ];
 
 self.addEventListener('install', e => {

@@ -7,13 +7,39 @@ const App = {
     }
     this.renderHome();
     this.showScreen('home');
+    this._seedBanks();
 
-    // Import file input
     document.getElementById('import-file').addEventListener('change', e => {
       const file = e.target.files[0];
       if (file) Editor.importJSON(file);
       e.target.value = '';
     });
+  },
+
+  async _seedBanks() {
+    if (localStorage.getItem('quizapp-seeded')) return;
+    const files = ['questions/tlc_mc.json', 'questions/tlc_problemi.json'];
+    let seeded = 0;
+    for (const path of files) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) continue;
+        const data = await res.json();
+        if (!data.questions || !Array.isArray(data.questions)) continue;
+        const bank = {
+          id: Storage.generateId(),
+          title: data.title || path,
+          subject: data.subject || '',
+          questions: data.questions.map((q, i) => ({ id: i + 1, ...q }))
+        };
+        Storage.saveBank(bank);
+        seeded++;
+      } catch (e) {}
+    }
+    if (seeded) {
+      localStorage.setItem('quizapp-seeded', '1');
+      this.renderHome();
+    }
   },
 
   showScreen(name) {
